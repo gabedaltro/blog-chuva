@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core";
 import { Content } from "pages/content/Content";
 import { Navbar } from "components/navbar/Navbar";
 import { Sidebar } from "components/sidebar/Sidebar";
-import { NavFooter } from "components/footer/Footer";
 import { NavbarApp } from "components/navbar/NavbarApp";
 import { ScrollTop } from "components/scrollToTop/ScrollTop";
 import { KeyboardArrowUp } from "@mui/icons-material";
