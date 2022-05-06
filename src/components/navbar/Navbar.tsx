@@ -1,6 +1,6 @@
-import { ArrowDropDown, Language } from "@mui/icons-material";
-import { Box, Icon, Typography } from "@mui/material";
 import React from "react";
+import { Box, Icon, Typography } from "@mui/material";
+import { ArrowDropDown, Language } from "@mui/icons-material";
 
 export const Navbar: React.FC = () => {
   return (

@@ -3,32 +3,32 @@ import { Box, Typography } from "@mui/material";
 import { Favorite, MoreVert } from "@mui/icons-material";
 import { useApp } from "hooks/app";
 
-interface QuestionBoxProps {
-  title: string;
-  author: string;
-  children: ReactNode | any;
-  qtdLike: number;
-  qtdAnswer: number;
+interface FirstQuestionBoxProps {
+  title: string | undefined;
+  author: string | undefined;
+  children: ReactNode;
+  qtdLike: number | undefined;
+  qtdAnswer: number | undefined;
 }
 
-export const QuestionBox: React.FC<QuestionBoxProps> = ({
+export const FirstQuestionBox: React.FC<FirstQuestionBoxProps> = ({
   title,
   author,
   children,
   qtdLike,
   qtdAnswer,
 }) => {
-  const [readMore, setReadMore] = useState(false);
-  const text = children;
   const app = useApp();
+  const text = children;
+  const [isReadMore, setIsReadMore] = useState(false);
 
-  function toggleReadMore() {
-    setReadMore(!readMore);
-  }
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
 
   useEffect(() => {
-    if (app.windowWidth <= 500) setReadMore(true);
-    else setReadMore(false);
+    if (app.windowWidth <= 500) setIsReadMore(true);
+    else setIsReadMore(false);
   }, [app.windowWidth]);
 
   return (
@@ -51,13 +51,13 @@ export const QuestionBox: React.FC<QuestionBoxProps> = ({
           </Typography>
         </Box>
         <Box>
-          <Typography>
-            {readMore ? text?.toString().slice(0, 100) + "..." : children}
+          <Typography color="#666">
+            {isReadMore ? text?.toString().slice(0, 100) : children}
           </Typography>
           {app.windowWidth <= 500 && (
             <span onClick={toggleReadMore}>
               <Typography color="#ed7839">
-                {readMore ? "ver mais..." : "ver menos"}
+                {isReadMore ? "ver mais..." : "ver menos"}
               </Typography>
             </span>
           )}
@@ -67,10 +67,12 @@ export const QuestionBox: React.FC<QuestionBoxProps> = ({
           <MoreVert cursor="pointer" color="warning" />
           <Favorite cursor="pointer" color="warning" />
           <Typography fontSize="0.8rem">
-            {qtdAnswer > 1 ? qtdAnswer + " respostas" : qtdAnswer + " resposta"}
+            {qtdAnswer !== 0
+              ? qtdAnswer + " respostas"
+              : qtdAnswer + " resposta"}
           </Typography>
           <Typography fontSize="0.8rem">
-            {qtdLike > 1 ? qtdLike + " likes" : qtdLike + " like"}
+            {qtdLike !== 0 ? qtdLike + " likes" : qtdLike + " like"}
           </Typography>
         </Box>
       </Box>

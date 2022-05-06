@@ -30,7 +30,7 @@ export const BoxApp: React.FC<BoxAppProps> = ({ children, title }) => {
           </Box>
           <Box padding="10px" textAlign="justify">
             <Typography>
-              {isReadMore ? text?.toString().slice(0, 250) : children}
+              {isReadMore ? text?.toString().slice(0, 100) : children}
             </Typography>
             <span>
               <Typography color="#ed7839">

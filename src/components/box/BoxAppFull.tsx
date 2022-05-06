@@ -3,10 +3,10 @@ import React, {
   ReactElement,
   ReactNode,
   SetStateAction,
-  useState,
 } from "react";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import { FormatBold, FormatItalic } from "@mui/icons-material";
+import { useContents } from "pages/content/hooks/useContents";
 
 interface BoxAppFullProps {
   children: ReactNode;
@@ -28,7 +28,7 @@ export const BoxAppFull: React.FC<BoxAppFullProps> = ({
   createTopic,
   setCreateTopic,
 }) => {
-  const [successfullSend, setSuccessfullSend] = useState(false);
+  const { successfullSend, setSuccessfullSend } = useContents();
 
   function handleSubmit() {
     setSuccessfullSend(true);
@@ -166,11 +166,7 @@ export const BoxAppFull: React.FC<BoxAppFullProps> = ({
             </Box>
           )}
         </Box>
-        <Box padding="10px 30px">
-          <Typography variant="body1" color="rgb(106 102 102)">
-            {children}
-          </Typography>
-        </Box>
+        <Box padding="10px 30px">{children}</Box>
       </Box>
     </div>
   );

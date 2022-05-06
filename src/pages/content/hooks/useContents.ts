@@ -1,9 +1,12 @@
-import { createContext, useContext } from "react";
+import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import { Question } from "types/question";
 
 export interface ContentContextValue {
+  questions: Question[];
   selectedQuestion: Question | null;
   setSelectedQuestion(question: Question | null): void;
+  successfullSend: boolean;
+  setSuccessfullSend: Dispatch<SetStateAction<boolean>>;
 }
 
 const ContentContext = createContext<ContentContextValue>(

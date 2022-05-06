@@ -8,10 +8,12 @@ import { BoxAppFull } from "components/box/BoxAppFull";
 import { Box, Button, Typography } from "@mui/material";
 import { Questions as questionsApp } from "json/questions";
 import { QuestionList } from "pages/content/question/QuestionList";
+import { WaitingFeedback } from "./WaitingFeedback";
 
 export const Content: React.FC = () => {
   const [createTopic, setCreateTopic] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [successfullSend, setSuccessfullSend] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(
     null
   );
@@ -26,8 +28,11 @@ export const Content: React.FC = () => {
   return (
     <ContentProvider
       value={{
+        questions,
         selectedQuestion,
         setSelectedQuestion,
+        successfullSend,
+        setSuccessfullSend,
       }}
     >
       <Box padding="30px 40px" display="grid" gap="30px">
@@ -76,12 +81,19 @@ export const Content: React.FC = () => {
               onClick={toggleCreateTopic}
             >
               <Add />
-              <Typography textTransform="lowercase">criar tópico</Typography>
+              <Typography textTransform="lowercase">
+                {!successfullSend ? "criar tópico" : "criar novo tópico"}
+              </Typography>
             </Button>
           }
         >
-          <QuestionList questions={questions} />
-          {selectedQuestion && <AnswerList answers={selectedQuestion.answer} />}
+          <WaitingFeedback />
+          <Box>
+            <QuestionList questions={questions} />
+            {selectedQuestion && (
+              <AnswerList answers={selectedQuestion.answer} />
+            )}
+          </Box>
         </BoxAppFull>
       </Box>
     </ContentProvider>

@@ -18,7 +18,7 @@ export const QuestionList: React.FC<QuestionListProps> = ({ questions }) => {
   return (
     <>
       {questions.map((question) => (
-        <Box key={question.id} onClick={() => handleClick(question)}>
+        <Box onClick={() => handleClick(question)} key={question.id}>
           <QuestionBox
             qtdAnswer={question.answer.length}
             qtdLike={question.likes}

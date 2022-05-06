@@ -1,17 +1,24 @@
 import React from "react";
 import { Menu as MenuApp } from "components/Menu/Menu";
 import { Box, Typography } from "@mui/material";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+  container: {
+    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+    flexDirection: "column",
+    textAlign: "center",
+    minHeight: "100vh",
+    display: "flex",
+    height: "100%",
+  },
+}));
 
 export const Sidebar: React.FC = () => {
+  const classes = useStyles();
+
   return (
-    <Box
-      boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
-      flexDirection="column"
-      textAlign="center"
-      minHeight="100vh"
-      display="flex"
-      height="100%"
-    >
+    <div className={classes.container}>
       <Box
         justifyContent="center"
         alignItems="center"
@@ -29,6 +36,6 @@ export const Sidebar: React.FC = () => {
       <div>
         <MenuApp />
       </div>
-    </Box>
+    </div>
   );
 };

@@ -19,7 +19,7 @@ export const BoxElement: React.FC<BoxElementProps> = ({ children, title }) => {
             {title}
           </Typography>
         </Box>
-        <Box padding="10px" textAlign="justify">
+        <Box padding="10px" textAlign="start">
           <Typography>{children}</Typography>
         </Box>
       </Box>
