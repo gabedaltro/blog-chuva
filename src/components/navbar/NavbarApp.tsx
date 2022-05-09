@@ -31,7 +31,7 @@ export const NavbarApp: React.FC = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box bgcolor="#ed6c02" sx={{ flexGrow: 1 }}>
       <AppBar color="transparent" position="static">
         <Toolbar>
           <IconButton
